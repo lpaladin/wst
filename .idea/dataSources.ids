@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - db_2014_79@localhost" uuid="45100495-ce7e-4cff-ae32-28f998c52b2b">
+    <database-info product="MySQL" version="5.5.32-0ubuntu0.12.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="db_2014_79"/>
+    <table name="guest_party" schema="" catalog="db_2014_79" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="guest_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="party_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_guest_id" columns="guest_id" ref-table="guests" ref-schema="" ref-catalog="db_2014_79" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_party_id" columns="party_id" ref-table="parties" ref-schema="" ref-catalog="db_2014_79" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_guest_id" unique="false" columns="guest_id"/>
+      <index name="fk_party_id" unique="false" columns="party_id"/>
+    </table>
+    <table name="guests" schema="" catalog="db_2014_79" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="TINYTEXT" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="age" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="gender" sqlType="ENUM" precision="6" scale="0" nullable="false" jdbcType="1"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="email" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="joined_party" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_guest_id" table="guest_party" schema="" catalog="db_2014_79" columns="guest_id"/>
+    </table>
+    <table name="parties" schema="" catalog="db_2014_79" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="host" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="location" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="time" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_party_id" table="guest_party" schema="" catalog="db_2014_79" columns="party_id"/>
+    </table>
+  </data-source>
+  <data-source name="MySQL - neogame@localhost" uuid="4d296686-4d2c-4163-af85-8cf7d191612c">
+    <database-info product="MySQL" version="5.6.16" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="neogame"/>
+    <table name="attackmodes" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="33" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strNotes" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nRange" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="fDamageCut" sqlType="DECIMAL" precision="2" scale="1" nullable="true" jdbcType="3"/>
+      <column name="fDamageBlunt" sqlType="DECIMAL" precision="2" scale="1" nullable="true" jdbcType="3"/>
+      <column name="strChargeProfiles" sqlType="VARCHAR" precision="4" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nPenetration" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nType" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strSnd" sqlType="VARCHAR" precision="9" scale="0" nullable="true" jdbcType="12"/>
+      <column name="bTransfer" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vAttackerConditions" sqlType="VARCHAR" precision="51" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strIMG" sqlType="VARCHAR" precision="29" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fMorale" sqlType="DECIMAL" precision="3" scale="2" nullable="true" jdbcType="3"/>
+      <column name="strWieldPhrase" sqlType="VARCHAR" precision="57" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vAttackPhrases" sqlType="VARCHAR" precision="103" scale="0" nullable="true" jdbcType="12"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="barterhexes" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nX" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nY" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bBuys" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nRestockTreasureID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="battlemoves" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strID" sqlType="DECIMAL" precision="5" scale="3" nullable="true" jdbcType="3"/>
+      <column name="strName" sqlType="VARCHAR" precision="26" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strNotes" sqlType="VARCHAR" precision="29" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strSuccess" sqlType="VARCHAR" precision="55" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strFail" sqlType="VARCHAR" precision="67" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strPopUp" sqlType="VARCHAR" precision="325" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vChanceType" sqlType="VARCHAR" precision="8" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vUsConditions" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vThemConditions" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vPairConditions" sqlType="VARCHAR" precision="65" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vUsFailConditions" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vThemFailConditions" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vPairFailConditions" sqlType="VARCHAR" precision="59" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vUsPreConditions" sqlType="VARCHAR" precision="81" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vThemPreConditions" sqlType="VARCHAR" precision="17" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nSeeThem" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nSeeUs" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bAllOutOfRange" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bInAttackRange" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nMinCharges" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nMinRange" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nMaxRange" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nAttackModeType" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vHexTypes" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fChance" sqlType="DECIMAL" precision="3" scale="2" nullable="true" jdbcType="3"/>
+      <column name="fPriority" sqlType="DECIMAL" precision="3" scale="2" nullable="true" jdbcType="3"/>
+      <column name="fDetect" sqlType="DECIMAL" precision="3" scale="2" nullable="true" jdbcType="3"/>
+      <column name="fOrder" sqlType="DECIMAL" precision="3" scale="2" nullable="true" jdbcType="3"/>
+      <column name="fFatigue" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bApproach" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bOffense" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bFallBack" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bRetreat" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bPosition" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bPassive" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="camptypes" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strDesc" sqlType="VARCHAR" precision="49" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vImageList" sqlType="VARCHAR" precision="24" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aCapacities" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nTreasureID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="m_fAlertness" sqlType="DECIMAL" precision="2" scale="1" nullable="true" jdbcType="3"/>
+      <column name="m_fVisibility" sqlType="DECIMAL" precision="4" scale="2" nullable="true" jdbcType="3"/>
+      <column name="WetTempAdjustMod" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="m_fHealPerHourMod" sqlType="DECIMAL" precision="4" scale="3" nullable="true" jdbcType="3"/>
+      <column name="fSleepQuality" sqlType="DECIMAL" precision="4" scale="2" nullable="true" jdbcType="3"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="chargeprofiles" schema="" catalog="neogame" type="TABLE">
+      <column name="nID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="41" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strItemID" sqlType="DECIMAL" precision="4" scale="2" nullable="true" jdbcType="3"/>
+      <column name="fPerUse" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="fPerHour" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="fPerHourEquipped" sqlType="DECIMAL" precision="3" scale="2" nullable="true" jdbcType="3"/>
+      <column name="fPerHex" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bDegrade" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <index name="nID" unique="true" columns="nID"/>
+    </table>
+    <table name="conditions" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="51" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strDesc" sqlType="VARCHAR" precision="172" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aFieldNames" sqlType="VARCHAR" precision="188" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aModifiers" sqlType="VARCHAR" precision="58" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aEffects" sqlType="VARCHAR" precision="357" scale="0" nullable="true" jdbcType="12"/>
+      <column name="bFatal" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vIDNext" sqlType="VARCHAR" precision="44" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fDuration" sqlType="DECIMAL" precision="8" scale="3" nullable="true" jdbcType="3"/>
+      <column name="bPermanent" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vChanceNext" sqlType="VARCHAR" precision="42" scale="0" nullable="true" jdbcType="12"/>
+      <column name="bStackable" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bDisplay" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bDisplayOther" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bDisplayGameOver" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nColor" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bResetTimer" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bRemoveAll" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bRemovePostCombat" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nTransferRange" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="aThresholds" sqlType="VARCHAR" precision="29" scale="0" nullable="true" jdbcType="12"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="containertypes" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="23" scale="0" nullable="true" jdbcType="12"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="creatures" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="21" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strNamePublic" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strNotes" sqlType="VARCHAR" precision="48" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strImg" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vEncounterIDs" sqlType="VARCHAR" precision="34" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nMovesPerTurn" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nTreasureID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nFaction" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vAttackModes" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vBaseConditions" sqlType="VARCHAR" precision="109" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nCorpseID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vActivities" sqlType="VARCHAR" precision="134" scale="0" nullable="true" jdbcType="12"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="creaturesources" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="39" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nX" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nY" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nCreatureID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nMin" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nMax" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="fWeight" sqlType="DECIMAL" precision="3" scale="2" nullable="true" jdbcType="3"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="datafiles" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strDesc" sqlType="VARCHAR" precision="385" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fValue" sqlType="DECIMAL" precision="6" scale="2" nullable="true" jdbcType="3"/>
+      <column name="strImg" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="encounters" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="163" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strDesc" sqlType="VARCHAR" precision="1915" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strImg" sqlType="VARCHAR" precision="27" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nTreasureID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nRemoveTreasureID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="aConditions" sqlType="VARCHAR" precision="79" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aPreConditions" sqlType="VARCHAR" precision="31" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fPrice" sqlType="DECIMAL" precision="5" scale="1" nullable="true" jdbcType="3"/>
+      <column name="aResponses" sqlType="VARCHAR" precision="329" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aMinimapHexes" sqlType="VARCHAR" precision="37" scale="0" nullable="true" jdbcType="12"/>
+      <column name="bRemoveCreatures" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bRemoveUsed" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nItemsID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nCreatureID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ptCreatureHex" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ptTeleport" sqlType="VARCHAR" precision="6" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ptEditor" sqlType="VARCHAR" precision="13" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nType" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="fLootChance" sqlType="DECIMAL" precision="3" scale="2" nullable="true" jdbcType="3"/>
+      <column name="fAccidentChance" sqlType="DECIMAL" precision="3" scale="2" nullable="true" jdbcType="3"/>
+      <column name="fCreatureChance" sqlType="DECIMAL" precision="3" scale="2" nullable="true" jdbcType="3"/>
+      <column name="vAccidents" sqlType="VARCHAR" precision="23" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vLoot" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="encountertriggers" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="42" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nEncounterID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="fChance" sqlType="DECIMAL" precision="3" scale="2" nullable="true" jdbcType="3"/>
+      <column name="bLocBased" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bDateBased" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bHexBased" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bUnique" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bAIPassable" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="aArea" sqlType="VARCHAR" precision="9" scale="0" nullable="true" jdbcType="12"/>
+      <column name="dateMin" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12"/>
+      <column name="dateMax" sqlType="VARCHAR" precision="13" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aHexTypes" sqlType="VARCHAR" precision="98" scale="0" nullable="true" jdbcType="12"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="factions" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12"/>
+      <column name="dictFactions" sqlType="VARCHAR" precision="135" scale="0" nullable="true" jdbcType="12"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="forbiddenhexes" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nX" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nY" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="3" scale="0" nullable="true" jdbcType="12"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="gamevars" schema="" catalog="neogame" type="TABLE">
+      <column name="strName" sqlType="VARCHAR" precision="12" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strType" sqlType="VARCHAR" precision="3" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strValue" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <index name="strName" unique="true" columns="strName"/>
+    </table>
+    <table name="headlines" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strHeadline" sqlType="VARCHAR" precision="736" scale="0" nullable="true" jdbcType="12"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="hextypes" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="24" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strDesc" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nTerrainCost" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nVizLimiter" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nVizIncrease" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nTreasureID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bPassable" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nScavengeInitialID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nScavengeItemsIDPerHour" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nCampItems" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vLightLevels" sqlType="VARCHAR" precision="26" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nDefaultCampID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nMinRange" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nMaxRange" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vCondIDs" sqlType="VARCHAR" precision="3" scale="0" nullable="true" jdbcType="12"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="ingredients" schema="" catalog="neogame" type="TABLE">
+      <column name="nID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="49" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strRequiredProps" sqlType="VARCHAR" precision="19" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strForbidProps" sqlType="VARCHAR" precision="19" scale="0" nullable="true" jdbcType="12"/>
+      <index name="nID" unique="true" columns="nID"/>
+    </table>
+    <table name="itemprops" schema="" catalog="neogame" type="TABLE">
+      <column name="nID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strPropertyName" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <index name="nID" unique="true" columns="nID"/>
+    </table>
+    <table name="itemtypes" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nGroupID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nSubgroupID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strDesc" sqlType="VARCHAR" precision="155" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strDescAlt" sqlType="VARCHAR" precision="78" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nCondID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vImageList" sqlType="VARCHAR" precision="296" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vSpriteList" sqlType="VARCHAR" precision="96" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vImageUsage" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fWeight" sqlType="DECIMAL" precision="8" scale="4" nullable="true" jdbcType="3"/>
+      <column name="fMonetaryValue" sqlType="DECIMAL" precision="6" scale="2" nullable="true" jdbcType="3"/>
+      <column name="fMonetaryValueAlt" sqlType="DECIMAL" precision="6" scale="2" nullable="true" jdbcType="3"/>
+      <column name="fDurability" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="fDegradePerHour" sqlType="DECIMAL" precision="8" scale="4" nullable="true" jdbcType="3"/>
+      <column name="fEquipDegradePerHour" sqlType="DECIMAL" precision="8" scale="5" nullable="true" jdbcType="3"/>
+      <column name="fDegradePerUse" sqlType="DECIMAL" precision="6" scale="5" nullable="true" jdbcType="3"/>
+      <column name="vDegradeTreasureIDs" sqlType="VARCHAR" precision="7" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aEquipConditions" sqlType="VARCHAR" precision="220" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aPossessConditions" sqlType="VARCHAR" precision="159" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aUseConditions" sqlType="VARCHAR" precision="215" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aCapacities" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vEquipSlots" sqlType="VARCHAR" precision="120" scale="0" nullable="true" jdbcType="12"/>
+      <column name="vUseSlots" sqlType="VARCHAR" precision="55" scale="0" nullable="true" jdbcType="12"/>
+      <column name="bSocketLocked" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vProperties" sqlType="VARCHAR" precision="39" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aContentIDs" sqlType="VARCHAR" precision="74" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nFormatID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nTreasureID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nComponentID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bMirrored" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nSlotDepth" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strChargeProfiles" sqlType="VARCHAR" precision="2" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aAttackModes" sqlType="VARCHAR" precision="35" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nStackLimit" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="aSwitchIDs" sqlType="VARCHAR" precision="16" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aSounds" sqlType="VARCHAR" precision="75" scale="0" nullable="true" jdbcType="12"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="maps" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="19" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strDef" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="recipes" schema="" catalog="neogame" type="TABLE">
+      <column name="nID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strSecretName" sqlType="VARCHAR" precision="54" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strTools" sqlType="VARCHAR" precision="24" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strConsumed" sqlType="VARCHAR" precision="41" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strDestroyed" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nTreasureID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="fHours" sqlType="DECIMAL" precision="3" scale="2" nullable="true" jdbcType="3"/>
+      <column name="nReverse" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="nHiddenID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bIdentify" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bTransferComponents" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="vAlsoTry" sqlType="VARCHAR" precision="8" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nTempTreasureID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bDegradeOutput" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strType" sqlType="VARCHAR" precision="6" scale="0" nullable="true" jdbcType="12"/>
+      <index name="nID" unique="true" columns="nID"/>
+    </table>
+    <table name="treasuretable" schema="" catalog="neogame" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="strName" sqlType="VARCHAR" precision="77" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aTreasures" sqlType="VARCHAR" precision="1202" scale="0" nullable="true" jdbcType="12"/>
+      <column name="bNested" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bSuppress" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bIdentify" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+  </data-source>
+</component>

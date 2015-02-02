@@ -1,0 +1,10 @@
+INSERT INTO db_2014_79.guests (id, name, age, gender, created_at, email, joined_party) VALUES (3, ''' or ''&lt;!--'' = ''&lt;!--', 4324, 'Male', '2014-10-30 23:50:00', 'd@f', 0);
+INSERT INTO db_2014_79.guests (id, name, age, gender, created_at, email, joined_party) VALUES (7, 't4', 1, 'Male', '2014-10-30 23:52:56', '1@2', 0);
+INSERT INTO db_2014_79.guests (id, name, age, gender, created_at, email, joined_party) VALUES (9, 'zhouhy', 19, 'Male', '2014-10-31 11:25:29', 'sohu@pku.edu.cn', 0);
+INSERT INTO db_2014_79.guests (id, name, age, gender, created_at, email, joined_party) VALUES (10, 'zhouhy', 19, 'Male', '2014-10-31 11:26:23', 'sohu@pku.edu.cn', 0);
+INSERT INTO db_2014_79.guests (id, name, age, gender, created_at, email, joined_party) VALUES (15, 'Finally', 233, 'Male', '2014-10-31 18:16:20', 'DONE@Yeah', 0);
+INSERT INTO db_2014_79.guests (id, name, age, gender, created_at, email, joined_party) VALUES (16, 'JoinAll', 21, 'Male', '2014-10-31 18:19:22', 'just@test', 1);
+INSERT INTO db_2014_79.guests (id, name, age, gender, created_at, email, joined_party) VALUES (17, 'JoinZhouhy1STTime', 1, 'Male', '2014-10-31 18:19:45', 'just@test', 1);
+INSERT INTO db_2014_79.guests (id, name, age, gender, created_at, email, joined_party) VALUES (18, 'JoinZhouhy2NDTime', 2, 'Male', '2014-10-31 18:19:53', 'just@test', 1);
+INSERT INTO db_2014_79.guests (id, name, age, gender, created_at, email, joined_party) VALUES (30, 'gege', 123, '', '2014-10-31 23:27:05', 'ï¿½''', 0);
+INSERT INTO db_2014_79.guests (id, name, age, gender, created_at, email, joined_party) VALUES (31, 'TestJoinAll', 1, 'Male', '2014-11-14 00:10:42', '1@2', 1);

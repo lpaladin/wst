@@ -1,0 +1,32 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the Closure to execute when that URI is requested.
+|
+*/
+
+Route::get('/', function ()
+{
+    return View::make('index');
+});
+
+Route::get('/test', function ()
+{
+    $all = '';
+    foreach (DB::statement('show tables') as $t)
+        $all .= $t;
+    return $all;
+});
+
+Route::group(['prefix' => 'guestbook'], function ()
+{
+    Route::get('/', 'GuestbookController@getAll');
+    Route::put('/', 'GuestbookController@createNew');
+    Route::delete('/', 'GuestbookController@delete');
+});

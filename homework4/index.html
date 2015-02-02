@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Homework 4</title>
+    <link href="/stylesheets/Global.css" rel="stylesheet" />
+    <link href="/stylesheets/jquery.datetimepicker.css" rel="stylesheet" />
+    <style type="text/css">
+        #banner {
+            width: auto;
+            margin: 0;
+        }
+
+        .lfixed {
+            float: left;
+            width: 25%;
+            height: 500px;
+        }
+
+        .center {
+            float: left;
+            width: 75%;
+            padding: 20px;
+        }
+        
+        table.general.lfloat {
+            width: auto;
+            max-width: 50%;
+            margin-right: 20px;
+        }
+
+        table.general.lfloat td {
+            min-width: 50px;
+        }
+
+        .form-inline {
+            margin-bottom: 20px;
+        }
+
+        .form-inline input, .form-inline select, .form-inline a.btn {
+            float: none !important;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js" type="text/javascript"></script>
+    <script src="/javascripts/FormValidation_json.js" type="text/javascript"></script>
+    <script src="/javascripts/jquery.datetimepicker.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function Toggle(selector) {
+            var curr = $(selector);
+            $(".current").removeClass("current").fadeOut(function () {
+                curr.fadeIn().addClass("current");
+                if (curr.hasClass("load-survey"))
+                    LoadResults();
+                if (curr.hasClass("load-parties"))
+                    LoadParties();
+                if (curr.hasClass("load-participation"))
+                    LoadParticipation();
+            });
+        }
+
+        // 表单提交设定
+        var confSendSurvey = new FormConfig({
+            method: "post",
+            action: "/homework4/guest.php"
+        });
+        var confJoinParty = new FormConfig({
+            method: "post",
+            action: "/homework4/guestParticipation.php"
+        });
+        var confAddParty = new FormConfig({
+            method: "post",
+            action: "/homework4/newparty.php"
+        });
+        var confDeleteItems = new FormConfig({
+            method: "post",
+            action: "/homework4/guest.php",
+            onSuccess: LoadResults
+        });
+
+        function LoadResults() {
+            $.get("/homework4/guest.php", { action: "get" }, function (data) {
+                var table = $("#tabResults");
+                table.find("tr:gt(0)").remove();
+                table.append(data.tablerows);
+                table.find("input[type=checkbox]:eq(0)")[0].checked = false;
+            }, "json");
+        }
+
+        function LoadParties() {
+            $.get("/homework4/guestParticipation.php", { action: "getParties" }, function (data) {
+                var table = $("#tabParties");
+                table.find("tr:gt(0)").remove();
+                table.append(data.tablerows);
+                table.find("input[type=checkbox]:eq(0)")[0].checked = false;
+            }, "json");
+        }
+
+        function LoadParticipation() {
+            $.get("/homework4/guestParticipation.php", { action: "getParticipation", name: $("#txtNameFilter").val() }, function (data) {
+                var table = $("#tabParticipation");
+                table.find("tr:gt(0)").remove();
+                table.append(data.tablerows);
+            }, "json");
+        }
+
+        function ToggleAll(ctrl) {
+            if (ctrl.checked)
+                $(ctrl).closest("table").find("input[type=checkbox]:gt(0)").each(function () { this.checked = true; });
+            else
+                $(ctrl).closest("table").find("input[type=checkbox]:gt(0)").each(function () { this.checked = false; });
+        }
+
+        $(document).ready(function () {
+            $("#txtTime").datetimepicker();
+        });
+    </script>
+</head>
+<body>
+    <!-- 页面顶端浮动导航栏 -->
+    <div id="navigation-bar">
+        <a href="http://162.105.146.183/b2evolution/blogs/index.php/zhouhy" id="btnGotoBlog"></a>
+        <span class="splitter"></span>
+        <a href="/">HOME</a>
+        <span class="splitter"></span>
+        <a href="http://162.105.146.183/wst/">HOME OF WST</a>
+        <span class="rfloat">Created by 周昊宇 / 1200012823</span>
+    </div>
+    <!-- 页首 -->
+    <div id="banner" class="basic-layout">
+        <p class="title">
+            Homework 4 by 周昊宇<br />
+            <small>- PHP and Database Access -</small>
+        </p>
+    </div>
+    <!-- 左中右块框 -->
+    <div id="container" class="wrapfloat">
+        <div id="lcolumn" class="lfixed padding basic-layout">
+            <p><b>Contents:</b></p>
+            <ol>
+                <li><a href="javascript:;" onclick="Toggle('#dAsHomework')"><b>(For TAs)</b> How I achieved all the goals set for this homework</a></li>
+                <li><a href="javascript:;" onclick="Toggle('#frmSurvey')">Partipicate in the survey NOW</a></li>
+                <li><a href="javascript:;" onclick="Toggle('#dManage')">View results and manage</a></li>
+                <li><a href="javascript:;" onclick="Toggle('#frmPartyParticipation')">Join the parties!</a></li>
+                <li><a href="javascript:;" onclick="Toggle('#dViewParticipation')">View who joined the parties</a></li>
+                <li><a href="javascript:;" onclick="Toggle('#frmAddParty')"><b>(Admin only)</b> Add a party!</a></li>
+            </ol>
+        </div>
+        <div class="center basic-layout">
+            <div id="dAsHomework" class="current">
+                <h2><b>(For TAs)</b> How I achieved all the goals set for this homework</h2>
+                <ul>
+                    <li><a href="http://162.105.146.183/b2evolution/blogs/index.php/zhouhy/homework1-of-week-4-database">&gt;&gt;&gt; Homework 1 is located here &lt;&lt;&lt;</a></li>
+                    <li>Homework 2 is completed as you can see this page provided in PHP.</li>
+                    <li>Homework 3: The guest book inherited from last week is presented in PHP and database version on the left as <em>item 2 and 3</em>. Note that all form submission in this page is still AJAX.</li>
+                    <li>Homework 4: Click <em>item 4</em> on the left and user can find out what parties will be given, and choose to go at the same time. For admins(no authentication needed), you can click <em>item 6</em> to create your own party.</li>
+                    <li>Homework 5: Click <em>item 5</em> on the left to view who joined the parties grouped by party. You can also filter it by entering part of the participant's name.</li>
+                </ul>
+                <p>
+                    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                        <img style="border:0;width:88px;height:31px"
+                             src="http://jigsaw.w3.org/css-validator/images/vcss"
+                             alt="Valid CSS!" />
+                    </a><br />
+                    <b>By the way, this page was successfully checked as HTML5 but w3.org does not provide any icon to display here...</b>
+                </p>
+            </div>
+            <form id="frmSurvey" onsubmit="return false" style="display: none">
+                <h2>Welcome to guest book, please fill in the form below!</h2>
+                <input type="hidden" name="action" value="new" data-validatefunc="dummy" />
+                <div class="wrapfloat">
+                    <label for="txtName">Name</label>
+                    <input id="txtName" name="name" type="text" data-validatefunc="nonnull shorterthan20" />
+                </div>
+                <div class="wrapfloat">
+                    <label for="txtAge">Age</label>
+                    <input id="txtAge" name="age" type="text" data-validatefunc="nonnull numeric" />
+                </div>
+                <div class="wrapfloat">
+                    <label for="cmbGender">Gender</label>
+                    <select id="cmbGender" name="gender" data-validatefunc="dummy">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="wrapfloat">
+                    <label for="txtEmail">Email</label>
+                    <input id="txtEmail" name="email" type="email" data-validatefunc="nonnull email" />
+                </div>
+                <div class="wrapfloat">
+                    <label></label>
+                    <input type="submit" class="btn" value="Submit!" onclick="ValidateAndSubmit($('#frmSurvey'), confSendSurvey)" />
+                </div>
+            </form>
+            <!-- 内联样式 -->
+            <div id="dManage" style="display: none" class="load-survey">
+                <input type="hidden" name="action" value="delete" data-validatefunc="dummy" />
+                <table id="tabResults" class="general">
+                    <tr><th><input type="checkbox" onchange="ToggleAll(this)" /></th><th>Name</th><th>Age</th><th>Gender</th><th>Email</th></tr>
+                </table>
+                <a href="javascript:;" onclick="LoadResults()" class="btn">Refresh</a>
+                <a href="javascript:;" onclick="ValidateAndSubmit($('#dManage'), confDeleteItems)" class="btn rfloat">Delete checked items</a>
+            </div>
+            <form id="frmPartyParticipation" onsubmit="return false" style="display: none" class="load-parties">
+                <h2>Welcome! Parties are listed below, choose the ones you like and fill in your information!</h2>
+                <input type="hidden" name="action" value="new" data-validatefunc="dummy" />
+                <table id="tabParties" class="general lfloat">
+                    <tr><th><input type="checkbox" onchange="ToggleAll(this)" /></th><th>Time</th><th>Place</th><th>Host</th></tr>
+                </table>
+                <div class="wrapfloat lfloat">
+                    <div class="wrapfloat">
+                        <label for="txtName_p">Name</label>
+                        <input id="txtName_p" name="name" type="text" data-validatefunc="nonnull shorterthan20" />
+                    </div>
+                    <div class="wrapfloat">
+                        <label for="txtAge_p">Age</label>
+                        <input id="txtAge_p" name="age" type="text" data-validatefunc="nonnull numeric" />
+                    </div>
+                    <div class="wrapfloat">
+                        <label for="cmbGender_p">Gender</label>
+                        <select id="cmbGender_p" name="gender" data-validatefunc="dummy">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="wrapfloat">
+                        <label for="txtEmail_p">Email</label>
+                        <input id="txtEmail_p" name="email" type="email" data-validatefunc="nonnull email" />
+                    </div>
+                    <div class="wrapfloat">
+                        <label></label>
+                        <input type="submit" class="btn" value="Submit!" onclick="ValidateAndSubmit($('#frmPartyParticipation'), confJoinParty)" />
+                    </div>
+                </div>
+            </form>
+            <form id="dViewParticipation" style="display: none" class="load-participation">
+                <div class="form-inline">
+                    <b>Filter:</b> Name includes <input id="txtNameFilter" type="text" name="name" data-validatefunc="dummy" />
+                    <a href="javascript:;" onclick="LoadParticipation()" class="btn">Refresh</a>
+                </div>
+                <table id="tabParticipation" class="general">
+                    <tr><th>Party</th><th>Name</th><th>Age</th><th>Gender</th><th>Email</th></tr>
+                </table>
+            </form>
+            <form id="frmAddParty" onsubmit="return false" style="display: none">
+                <h2>Add a new party!</h2>
+                <h3>You are responsible for all the information provided below and should the party be postponed or canceled, you will owe the participants a BG!</h3>
+                <div class="wrapfloat">
+                    <label for="txtHost">Your Name</label>
+                    <input id="txtHost" name="host" type="text" data-validatefunc="nonnull shorterthan20" />
+                </div>
+                <div class="wrapfloat">
+                    <label for="txtLocation">Party Location</label>
+                    <input id="txtLocation" name="location" type="text" data-validatefunc="nonnull" />
+                </div>
+                <div class="wrapfloat">
+                    <label for="txtTime">Party Time</label>
+                    <input id="txtTime" name="time" type="text" data-validatefunc="nonnull" />
+                </div>
+                <div class="wrapfloat">
+                    <label></label>
+                    <input type="submit" class="btn" value="Submit!" onclick="ValidateAndSubmit($('#frmAddParty'), confAddParty)" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 页脚 -->
+    <!-- 内联样式 -->
+    <div id="footer" class="basic-layout">
+        <hr />
+        <div style="color: #777; text-align: center">All rights reserved 2014 Zhou Haoyu, Peking University.</div>
+    </div>
+</body>
+</html>

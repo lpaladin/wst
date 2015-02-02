@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Homework 6</title>
+    <link href="/stylesheets/Global.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/stylesheets/prettify.css" type="text/css" />
+    <style type="text/css">
+        .funclink {
+            float: right;
+            clear: both;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js" type="text/javascript"></script>
+    <script src="/javascripts/AutoFloat.js" type="text/javascript"></script>
+    <script src="/javascripts/FormValidation.js" type="text/javascript"></script>
+    <script src="/javascripts/prettify/prettify.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function ViewSrc(id) {
+            ShowSrc($("#" + id).text());
+        }
+
+        function ViewOnlineSrc(url) {
+            $.get(url, function (src) {
+                ShowSrc(src);
+            });
+        }
+
+        function ShowSrc(src) {
+            $("#dlgViewSrc").fadeIn().find("pre").replaceWith($("<pre class=\"prettyprint roundbound\"></pre>").text(src));
+            prettyPrint();
+        }
+
+        function myAlert2(aString) {
+            //this function takes parameter
+            // it also returns a value
+            window.alert("Alerting: " + aString);
+            return 34;
+        }
+
+        var confSendSurvey = new FormConfig({
+            method: "post",
+            action: "/dump.jsp",
+            onSuccess: function (content) {
+                alert("Submission result:\n" + content);
+            }
+        });
+
+        $(document).ready(function () {
+            $(".mask").click(function (e) {
+                if ($(this).is(e.target))
+                    $(this).fadeOut();
+            });
+        })
+    </script>
+    <script type="text/javascript" id="sHomework4">
+        var holidays = [];
+        var tourOperator = "Ten Bellies Tours";
+
+        function Holiday(destination, duration, cost) {
+            this.destination = destination;
+            this.duration = duration;
+            this.cost = cost;
+            this.agent = tourOperator;
+        }
+
+        function makeHoliday(dest, dur, cost) {
+            holidays.push(new Holiday(dest, dur, cost));
+        }
+
+        function outputObject(anObject) {
+            for (f in anObject) {
+                $("#pHomework4").append(f + " = " + anObject[f] + "\n");
+            }
+            $("#pHomework4").append("\n");
+        }
+
+        function RunHomework4() {
+            makeHoliday("Panjin", "4 hrs", "FREEEEEEE!");
+            makeHoliday("ShenYang", "5 hrs", "$1");
+            makeHoliday("ChangChun", "8 hrs", "$2");
+            makeHoliday("HaErBin", "12 hrs", "$3");
+
+            for (var i in holidays)
+                outputObject(holidays[i]);
+        }
+    </script>
+</head>
+<body>
+    <div id="dlgViewSrc" class="mask">
+        <div class="inner">
+            <h3 style="margin-top: 0">View Source</h3>
+            <hr />
+            <pre></pre>
+        </div>
+    </div>
+    <!-- 页面顶端浮动导航栏 -->
+    <div id="navigation-bar">
+        <a href="http://162.105.146.183/b2evolution/blogs/index.php/zhouhy" id="btnGotoBlog"></a>
+        <span class="splitter"></span>
+        <a href="/">HOME</a>
+        <span class="splitter"></span>
+        <a href="http://net.pku.edu.cn/~zt/wst/">HOME OF WST</a>
+        <span class="rfloat">Created by 周昊宇 / 1200012823</span>
+    </div>
+    <!-- 页首 -->
+    <div id="banner">
+        <p class="title">
+            Homework 6 by 周昊宇
+        </p>
+        <p class="subtitle">
+            <small>-- For <em>Web Software &amp; Technology</em> Course</small>
+        </p>
+    </div>
+    <!-- 正文 -->
+    <div class="content wrapfloat">
+        <div class="divide-2of3 padding">
+            <p>All of the homeworks are embedded in this page alone instead of seperate pages for convinence.</p>
+            <!-- 作业检查项 -->
+            <a id="homework0"></a>
+            <h2><b>(Homework 0) Answers</b> to questions raised in homework</h2>
+            <p class="wrapfloat">
+                <a target="_blank" href="http://162.105.146.183/b2evolution/blogs/index.php/zhouhy/homework-0-for-week-6">&gt;&gt;&gt; Click Here &lt;&lt;&lt;</a>
+            </p>
+            <a id="homework1"></a>
+            <h2><b>Script 1</b> hiThere</h2>
+            <p class="wrapfloat">
+                Note: Using comment tags is deprecated as all modern browsers can understand the &lt;script&gt; tag.<br />
+                Therefore I won't use it.<br />
+                <a href="javascript:;" class="funclink" onclick="ViewSrc('sHomework1')">View Source!</a>
+            </p>
+            <script type="text/javascript" id="sHomework1">
+                document.writeln("<ul><li><b>Hometown and country:</b> I'm from Liaoning province, China.</li>");
+                document.writeln("<li><b>Favorite TV show:</b> I fancy watching <em>The Big Bang Theory</em> the most though I've got no time lately.</li>");
+                document.writeln("<li><b>Favorite food:</b> Hard to say. Almost EVERYTHING EDIBLE.</li></ul>");
+            </script>
+            <a id="homework2"></a>
+            <h2><b>Script 2</b> function</h2>
+            <p class="wrapfloat">
+                Note: Javascript function can also be defined in body, or let's just say, everywhere.
+                <a href="javascript:;" class="funclink" onclick="ViewSrc('sHomework2')">View Source!</a>
+                <a href="javascript:;" class="funclink" onclick="RunHomework2()">Run Script!</a>
+            </p>
+            <pre id="pHomework2" class="roundbound"></pre>
+            <script type="text/javascript" id="sHomework2">
+                function RunHomework2() {
+                    $("#pHomework2").append("myAlert2('foo') returns: " + myAlert2('foo') + "\n");
+                    $("#pHomework2").append("myAlert2('bar') returns: " + myAlert2('bar') + "\n");
+                    function insertNonEqual(a, b) {
+                        return a + " != " + b;
+                    }
+                    $("#pHomework2").append("insertNonEqual('this', 'that') returns: " + insertNonEqual('this', 'that') + "\n");
+                }
+            </script>
+            <a id="homework3"></a>
+            <h2><b>Script 3</b> popups</h2>
+            <p class="wrapfloat">
+                Note: <a target="_blank" href="http://www.w3school.com.cn/jsref/prop_win_status.asp">The status bar can no longer be accessed from script on modern browsers</a>, therefore <em>the Lime</em> below is broken forever...<br />
+                Mr Pudding says: Do you want to go to
+                <a href="#" onmouseover="window.status = 'Off to the Lemon'; return true"
+                   onmouseout="window.status='';">the Lemon</a>?
+                <br />or would you prefer the
+                <a href="#" onmouseover="window.status='Ah.... I see that you prefer the lime'; return true"
+                   onmouseout="window.status='';">the Lime</a>?<br />
+                <a href="javascript:;" class="funclink" onclick="ViewSrc('sHomework3')">View Source!</a>
+                <a href="javascript:;" class="funclink" onclick="RunHomework3()">Run Script!</a>
+            </p>
+            <script type="text/javascript" id="sHomework3">
+                function RunHomework3() {
+                    var href = prompt("Where are you going? (Input a URL here)", "#");
+                    if (href)
+                        window.location.href = href;
+                }
+            </script>
+            <a id="homework4"></a>
+            <h2><b>Script 4</b> objects</h2>
+            <p class="wrapfloat">
+                <a href="javascript:;" class="funclink" onclick="ViewSrc('sHomework4')">View Source!</a>
+                <a href="javascript:;" class="funclink" onclick="RunHomework4()">Run Script!</a>
+            </p>
+            <pre id="pHomework4" class="roundbound"></pre>
+            <a id="homework5"></a>
+            <h2><b>Script 5</b> wizardForm</h2>
+            <p class="wrapfloat">
+                I almost completely re-writed this form.<br />
+                This form is also using AJAX submission.<br />
+                The validation feature is specified in the <em>data-validatefunc</em> attribute of each input element.<br />
+                All of the textboxes are validated, with <em>Age</em> and <em>ID Number</em> checked with regex.<br />
+                I also made minor validation when a textbox lost its focus. If any error occurs, it will turn yellow to indicate.<br />
+                <a href="javascript:;" class="funclink" onclick="ViewOnlineSrc('/javascripts/FormValidation.js')">View Source!</a>
+            </p>
+            <form id="frmSurvey" onsubmit="return false">
+                <div class="wrapfloat">
+                    <label for="txtFirstName">First Name</label>
+                    <input id="txtFirstName" name="first" type="text" data-validatefunc="nonnull name" />
+                </div>
+                <div class="wrapfloat">
+                    <label for="txtLastName">Last Name</label>
+                    <input id="txtLastName" name="last" type="text" data-validatefunc="nonnull name" />
+                </div>
+                <div class="wrapfloat">
+                    <label for="txtAge">Age</label>
+                    <input id="txtAge" name="age" type="text" data-validatefunc="nonnull numeric age" maxlength="3" />
+                </div>
+                <div class="wrapfloat">
+                    <label>Sex</label>
+                    <div id="grpGender">
+                        <label class="rad" for="radMale"><input id="radMale" type="radio" name="sex" value="male" data-validatefunc="dummy" checked /> Male</label>
+                        <label class="rad" for="radFemale"><input id="radFemale" type="radio" name="sex" value="female" data-validatefunc="dummy" /> Female</label>
+                    </div>
+                </div>
+                <div class="wrapfloat">
+                    <label for="txtID">ID Number</label>
+                    <input id="txtID" name="id" type="text" data-validatefunc="nonnull idnumber" maxlength="20" />
+                </div>
+                <div class="wrapfloat">
+                    <label></label>
+                    <div class="lfloat" id="dAddons">
+                        <p>Choose one of the following options:</p>
+                        <p class="wrapfloat">
+                            <label class="rad" for="rad1D"><input type="radio" id="rad1D" name="watch" data-validatefunc="dummy" value="Dunno" checked /> I don't know?!</label>
+                            <label class="rad" for="rad1R"><input type="radio" id="rad1R" name="watch" data-validatefunc="dummy" value="Radio" /> Radio</label>
+                            <label class="rad" for="rad1T"><input type="radio" id="rad1T" name="watch" data-validatefunc="dummy" value="TV" /> TV</label>
+                            <label class="rad" for="rad1F"><input type="radio" id="rad1F" name="watch" data-validatefunc="dummy" value="Film" /> Film</label>
+                        </p>
+                        <p>Choose one of the following options:</p>
+                        <p class="wrapfloat">
+                            <select name="holiday" data-validatefunc="dummy">
+                                <option value="Greece" selected=selected>Greece</option>
+                                <option value="Italy">Italy</option>
+                                <option value="France">France</option>
+                                <option value="Spain">Spain</option>
+                            </select>
+                        </p>
+                        <p>How would you rate your knowledge of JavaScript?</p>
+                        <p class="wrapfloat">
+                            <label class="rad" for="rad21"><input type="radio" id="rad21" name="knowledge" data-validatefunc="dummy" value="1" onclick="alert('Time for some SERIOUS learning');" />1</label>
+                            <label class="rad" for="rad22"><input type="radio" id="rad22" name="knowledge" data-validatefunc="dummy" value="2" onclick="alert('I hope you\'re yearning for some learning');" />2</label>
+                            <label class="rad" for="rad23"><input type="radio" id="rad23" name="knowledge" data-validatefunc="dummy" value="3" checked />3</label>
+                            <label class="rad" for="rad24"><input type="radio" id="rad24" name="knowledge" data-validatefunc="dummy" value="4" />4</label>
+                            <label class="rad" for="rad25"><input type="radio" id="rad25" name="knowledge" data-validatefunc="dummy" value="5" />5</label>
+                        </p>
+                        <input type="submit" class="btn" value="Submit!" onclick="ValidateAndSubmit($('#frmSurvey'), confSendSurvey)" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 目录 -->
+        <div class="divide-1of3 lmargin padding contents">
+            <p>Contents:</p>
+            <ol>
+                <li><a href="#homework0"><b>(Homework 0) Answers</b> to questions raised in homework</a></li>
+                <li><a href="#homework1"><b>Script 1</b> hiThere</a></li>
+                <li><a href="#homework2"><b>Script 2</b> function</a></li>
+                <li><a href="#homework3"><b>Script 3</b> popups</a></li>
+                <li><a href="#homework4"><b>Script 4</b> objects</a></li>
+                <li><a href="#homework5"><b>Script 5</b> wizardForm</a></li>
+            </ol>
+        </div>
+    </div>
+    <div id="footer">
+        <hr />
+        <div style="color: #777; text-align: center">All rights reserved 2014 Zhou Haoyu, Peking University.</div>
+    </div>
+</body>
+</html>

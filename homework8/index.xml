@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="index.xslt" ?>
+<recipes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://162.105.146.180:8079/recipe index.xsd">
+  <recipe>
+    <name>红烧排骨</name>
+    <ingredients>
+      <ingredient type="主料">
+        <name>猪排骨</name>
+        <amount unit="斤">1</amount>
+      </ingredient>
+      <ingredient type="调料">
+        <name>八角</name>
+        <amount unit="个">2</amount>
+      </ingredient>
+      <ingredient type="调料">
+        <name>花椒</name>
+        <amount unit="钱">1</amount>
+      </ingredient>
+      <ingredient type="调料">
+        <name>味精</name>
+        <amount unit="钱">1</amount>
+      </ingredient>
+      <ingredient type="调料">
+        <name>酱油</name>
+        <amount unit="匙">4</amount>
+      </ingredient>
+    </ingredients>
+    <steps>
+      <step>
+        <action>猪排骨切成小块，洗净</action>
+        <cookers>
+          <cooker>菜刀</cooker>
+        </cookers>
+      </step>
+      <step>
+        <action>把猪排骨放进锅中，放入足量清水淹没，大火焯过</action>
+        <cookers>
+          <cooker>锅</cooker>
+          <cooker>清水</cooker>
+          <cooker>大火</cooker>
+        </cookers>
+      </step>
+      <step>
+        <action>水煮沸后立刻倒掉，然后重新放入清水淹没，并加入酱油、八角、花椒，盖上锅盖，调至中火</action>
+        <cookers>
+          <cooker>锅</cooker>
+          <cooker>清水</cooker>
+          <cooker>中火</cooker>
+        </cookers>
+      </step>
+      <step>
+        <action>即将烧干时加入味精，然后出锅</action>
+        <cookers>
+          <cooker>锅</cooker>
+          <cooker>中火</cooker>
+        </cookers>
+      </step>
+    </steps>
+  </recipe>
+</recipes>
